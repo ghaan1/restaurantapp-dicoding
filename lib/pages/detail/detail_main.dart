@@ -137,7 +137,9 @@ class _DetailRestoranState extends State<DetailRestoran> {
                               showDialog(
                                   context: context,
                                   builder: (context) {
-                                    return DetailMenuRestaurant();
+                                    return DetailMenuRestaurant(
+                                      restaurant: widget.restaurant,
+                                    );
                                   });
                             },
                             child: const Text("Menu",

@@ -1,47 +1,162 @@
 import 'package:flutter/material.dart';
 
-class DetailMenuRestaurant extends StatelessWidget {
-  const DetailMenuRestaurant({super.key});
+import 'package:restaurantapp/models/models_restaurant.dart';
+import 'package:restaurantapp/pages/detail/detail_main.dart';
+import 'package:restaurantapp/utils/utils.dart';
+
+class DetailMenuRestaurant extends StatefulWidget {
+  Restaurant restaurant;
+  DetailMenuRestaurant({
+    Key? key,
+    required this.restaurant,
+  }) : super(key: key);
+
+  @override
+  _DetailMenuRestaurantState createState() => _DetailMenuRestaurantState();
+}
+
+class _DetailMenuRestaurantState extends State<DetailMenuRestaurant>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  List<Foods>? food;
+  List<Drinks>? drinks;
+  @override
+  void initState() {
+    _tabController = TabController(length: 2, vsync: this);
+    super.initState();
+    food = widget.restaurant.menus?.foods;
+    drinks = widget.restaurant.menus?.drinks;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _tabController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      elevation: 1,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: Container(
-        width: MediaQuery.of(context).size.width / 1.5,
-        height: MediaQuery.of(context).size.height / 1.5,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(15.0),
-            boxShadow: [
-              BoxShadow(
-                  offset: const Offset(12, 26),
-                  blurRadius: 50,
-                  spreadRadius: 0,
-                  color: Colors.grey.withOpacity(.1)),
-            ]),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("Detail",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold)),
-            const SizedBox(
-              height: 15,
-            ),
-            Text(
-              "text",
-              style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF6777EE),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(children: [
+          Container(
+            height: 45,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(
+                25.0,
               ),
-            )
-          ],
-        ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(6),
+              child: TabBar(
+                  controller: _tabController,
+                  indicator: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      25.0,
+                    ),
+                    color: kPrimaryColor,
+                  ),
+                  labelColor: Colors.white,
+                  unselectedLabelColor: Colors.black,
+                  tabs: const [
+                    Tab(
+                      child: Text('Food'),
+                    ),
+                    Tab(
+                      child: Text('Drink'),
+                    )
+                  ]),
+            ),
+          ),
+          Expanded(
+            child: TabBarView(controller: _tabController, children: [
+              Center(
+                  child: ListView.builder(
+                      itemCount: food?.length,
+                      itemBuilder: ((context, index) {
+                        return Container(
+                            width: double.infinity,
+                            height: 54,
+                            margin: const EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                  color: kDarkColor,
+                                  width: 1,
+                                )
+                                // color: Colors.white,
+                                ),
+                            child: TextButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15)))),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    flex: 7,
+                                    child: Text(
+                                      food![index].name ?? '',
+                                      style: const TextStyle(
+                                        color: kDarkColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ));
+                      }))),
+              Center(
+                  child: ListView.builder(
+                      itemCount: drinks?.length,
+                      itemBuilder: ((context, index) {
+                        return Container(
+                            width: double.infinity,
+                            height: 54,
+                            margin: const EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                  color: kDarkColor,
+                                  width: 1,
+                                )
+                                // color: Colors.white,
+                                ),
+                            child: TextButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15)))),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    flex: 7,
+                                    child: Text(
+                                      drinks![index].name ?? '',
+                                      style: const TextStyle(
+                                        color: kDarkColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ));
+                      }))),
+            ]),
+          ),
+        ]),
       ),
     );
   }
