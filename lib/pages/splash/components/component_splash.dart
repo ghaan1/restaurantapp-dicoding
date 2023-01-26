@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_button/social/github_auth_button.dart';
+import 'package:restaurantapp/pages/home/home_main.dart';
 import 'package:restaurantapp/utils/utils.dart';
 
 class HeaderSplash extends StatelessWidget {
@@ -62,7 +63,16 @@ class ButtonSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GithubAuthButton(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const HomeMain();
+            },
+          ),
+        );
+      },
       title: 'Mulai',
       fontWeight: FontWeight.bold,
       wGradientColors: true,

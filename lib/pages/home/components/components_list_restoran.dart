@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+
+import 'package:restaurantapp/models/models_restaurant.dart';
 import 'package:restaurantapp/utils/utils.dart';
 
 class ListRestoran extends StatelessWidget {
-  const ListRestoran({
+  Restaurant restaurant;
+  ListRestoran({
     Key? key,
+    required this.restaurant,
   }) : super(key: key);
 
   @override
@@ -20,26 +24,24 @@ class ListRestoran extends StatelessWidget {
           const Opacity(
             opacity: .5,
           ),
-          Image.network(
-              "https://firebasestorage.googleapis.com/v0/b/flutterbricks-public.appspot.com/o/Image.png?alt=media&token=8256c357-cf86-4f76-8c4d-4322d1ebc06c"),
+          Container(
+            margin: const EdgeInsets.fromLTRB(5, 25, 10, 20),
+            width: 150,
+            height: 100,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    alignment: Alignment.center,
+                    fit: BoxFit.fitHeight,
+                    image: NetworkImage(restaurant.pictureId))),
+          ),
           Padding(
             padding: const EdgeInsets.all(25.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                const Text(
-                  "Nama Restoran",
-                  style: TextStyle(
-                      color: kDarkColor,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  "Kota",
-                  style: TextStyle(
+                Text(
+                  restaurant.name,
+                  style: const TextStyle(
                       color: kDarkColor,
                       fontSize: 15,
                       fontWeight: FontWeight.bold),
@@ -47,18 +49,28 @@ class ListRestoran extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
+                Text(
+                  restaurant.city,
+                  style: const TextStyle(
+                      color: kDarkColor,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
-                    Icon(
+                  children: [
+                    const Icon(
                       Icons.star,
                       color: Colors.yellow,
                     ),
                     Text(
-                      "5",
-                      style: TextStyle(
+                      restaurant.rating.toString(),
+                      style: const TextStyle(
                           color: kDarkColor,
-                          fontSize: 20,
+                          fontSize: 15,
                           fontWeight: FontWeight.bold),
                     ),
                   ],

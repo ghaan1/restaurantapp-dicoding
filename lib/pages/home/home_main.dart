@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:restaurantapp/models/models_restaurant.dart';
+import 'package:restaurantapp/pages/detail/detail_main.dart';
+import 'package:restaurantapp/services/services.dart';
 import 'package:restaurantapp/utils/utils.dart';
-
-import 'components/components_filter_data.dart';
 import 'components/components_home_banner_list.dart';
 import 'components/components_list_restoran.dart';
 
@@ -13,6 +14,22 @@ class HomeMain extends StatefulWidget {
 }
 
 class _HomeMainState extends State<HomeMain> {
+  List<Restaurant> restaurant = [];
+
+  fetchData() {
+    ServicesRestaurant().readJson().then((resultList) {
+      setState(() {
+        restaurant = resultList[0];
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,28 +38,31 @@ class _HomeMainState extends State<HomeMain> {
         child: Column(
           children: [
             const BannerList(),
-            Container(
-              padding: const EdgeInsets.all(10),
-              height: MediaQuery.of(context).size.height / 15,
-              decoration: const BoxDecoration(color: kLightColor),
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (BuildContext context, int index) {
-                    return const FilterData();
-                  }),
-            ),
             Expanded(
                 flex: 6,
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(15, 0, 15, 15),
                   decoration: const BoxDecoration(color: kLightColor),
                   child: ListView.builder(
-                    itemCount: 10,
+                    itemCount: restaurant.length,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
-                          onTap: () {}, child: const ListRestoran());
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return DetailRestoran(
+                                    restaurant: restaurant[index],
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                          child: ListRestoran(
+                            restaurant: restaurant[index],
+                          ));
                     },
                   ),
                 ))
