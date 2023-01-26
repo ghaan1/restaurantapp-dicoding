@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurantapp/pages/detail/detail_main.dart';
 import 'package:restaurantapp/pages/home/home_main.dart';
 import 'package:restaurantapp/pages/splash/splash_main.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {'/': (context) => const HomeMain()},
+      routes: {'/': (context) => const DetailRestoran()},
       theme: ThemeData(
         fontFamily: 'Nunito',
       ),

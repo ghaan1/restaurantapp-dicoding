@@ -41,7 +41,8 @@ class _HomeMainState extends State<HomeMain> {
                     itemCount: 10,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (BuildContext context, int index) {
-                      return const ListRestoran();
+                      return GestureDetector(
+                          onTap: () {}, child: const ListRestoran());
                     },
                   ),
                 ))

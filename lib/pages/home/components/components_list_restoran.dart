@@ -50,7 +50,10 @@ class ListRestoran extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: const [
-                    Icon(Icons.star),
+                    Icon(
+                      Icons.star,
+                      color: Colors.yellow,
+                    ),
                     Text(
                       "5",
                       style: TextStyle(
