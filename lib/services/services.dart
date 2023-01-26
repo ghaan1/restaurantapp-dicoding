@@ -5,4 +5,4 @@ import 'package:restaurantapp/models/models_restaurant.dart';
 
 part 'services_restaurant.dart';
 
-String baseUrl = "assets/json/local_restaurant.json";
+String baseUrl = 'assets/json/sample.json';

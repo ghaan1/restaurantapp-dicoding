@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:restaurantapp/pages/detail/detail_main.dart';
-import 'package:restaurantapp/pages/home/home_main.dart';
 import 'package:restaurantapp/pages/splash/splash_main.dart';
 
 void main() {

@@ -32,12 +32,10 @@ class _DetailRestoranState extends State<DetailRestoran> {
     isiDeskripsi = widget.restaurant.description;
     food = widget.restaurant.menus?.foods;
     drinks = widget.restaurant.menus?.drinks;
-    // namaResto = widget!.restaurant.menu.food;
-    // namaResto = widget!.restaurant.name;
   }
 
   Icon getStar() {
-    return Icon(
+    return const Icon(
       Icons.star,
       color: Colors.yellow,
     );
@@ -53,7 +51,7 @@ class _DetailRestoranState extends State<DetailRestoran> {
             height: MediaQuery.of(context).size.height / 1,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  centerSlice: Rect.fromLTRB(0, 1, 0, 1),
+                  centerSlice: const Rect.fromLTRB(0, 1, 0, 1),
                   image: NetworkImage(foto),
                   fit: BoxFit.scaleDown,
                   alignment: Alignment.topCenter),
@@ -121,7 +119,10 @@ class _DetailRestoranState extends State<DetailRestoran> {
                           width: double.infinity,
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.black)),
-                          child: Text(isiDeskripsi)),
+                          child: Text(
+                            isiDeskripsi,
+                            textAlign: TextAlign.justify,
+                          )),
                       SizedBox(
                         height: 45,
                         width: double.infinity,

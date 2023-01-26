@@ -127,9 +127,7 @@ class _DetailMenuRestaurantState extends State<DetailMenuRestaurant>
                                 border: Border.all(
                                   color: kDarkColor,
                                   width: 1,
-                                )
-                                // color: Colors.white,
-                                ),
+                                )),
                             child: TextButton(
                               onPressed: () {},
                               style: ButtonStyle(
