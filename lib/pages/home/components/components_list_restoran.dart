@@ -19,63 +19,68 @@ class ListRestoran extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           gradient: const LinearGradient(colors: [kSmoothColor, kSmoothColor])),
-      child: Stack(
+      child: Row(
         children: [
           const Opacity(
             opacity: .5,
           ),
-          Container(
-            margin: const EdgeInsets.fromLTRB(5, 25, 10, 20),
-            width: 150,
-            height: 100,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    alignment: Alignment.center,
-                    fit: BoxFit.fitHeight,
-                    image: NetworkImage(restaurant.pictureId))),
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.fromLTRB(5, 25, 10, 20),
+              width: 150,
+              height: 100,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      alignment: Alignment.center,
+                      fit: BoxFit.fitHeight,
+                      image: NetworkImage(restaurant.pictureId))),
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(25.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  restaurant.name,
-                  style: const TextStyle(
-                      color: kDarkColor,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  restaurant.city,
-                  style: const TextStyle(
-                      color: kDarkColor,
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    const Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                    Text(
-                      restaurant.rating.toString(),
-                      style: const TextStyle(
-                          color: kDarkColor,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ],
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    restaurant.name,
+                    textAlign: TextAlign.end,
+                    style: const TextStyle(
+                        color: kDarkColor,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    restaurant.city,
+                    style: const TextStyle(
+                        color: kDarkColor,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                      ),
+                      Text(
+                        restaurant.rating.toString(),
+                        style: const TextStyle(
+                            color: kDarkColor,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ],
