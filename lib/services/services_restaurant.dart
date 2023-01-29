@@ -8,7 +8,7 @@ class ServicesRestaurant {
     final String response = await rootBundle.loadString(baseUrl);
     final data = json.decode(response);
     List<dynamic> list = (data as Map<String, dynamic>)['restaurants'];
-    List<dynamic> listMenu = (data)['menus'];
+    List<dynamic> listMenu = (data)['menus'] ?? [];
 
     for (var restaurant in list) {
       restaurants.add(Restaurant.fromJson(restaurant));

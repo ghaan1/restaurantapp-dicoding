@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:restaurantapp/models/models_restaurant.dart';
-import 'package:restaurantapp/pages/detail/detail_main.dart';
 import 'package:restaurantapp/utils/utils.dart';
 
 class DetailMenuRestaurant extends StatefulWidget {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_button/social/github_auth_button.dart';
 import 'package:restaurantapp/pages/home/home_main.dart';
 import 'package:restaurantapp/utils/utils.dart';
 
@@ -62,33 +61,47 @@ class ButtonSplash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GithubAuthButton(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return const HomeMain();
+    return SizedBox(
+      width: 200,
+      child: AspectRatio(
+        aspectRatio: 208 / 71,
+        child: Container(
+          decoration: const BoxDecoration(boxShadow: [
+            BoxShadow(
+                spreadRadius: 1.5,
+                blurRadius: 10,
+                offset: Offset(0.5, 6),
+                color: kDarkColor),
+          ]),
+          child: MaterialButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const HomeMain();
+                  },
+                ),
+              );
             },
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(36)),
+            padding: const EdgeInsets.all(0.0),
+            child: Ink(
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                      colors: [kSecondaryColor, kSecondaryColor]),
+                  borderRadius: BorderRadius.circular(36),
+                ),
+                child: Container(
+                    alignment: Alignment.center,
+                    child: const Text('Mulai',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold)))),
           ),
-        );
-      },
-      title: 'Mulai',
-      fontWeight: FontWeight.bold,
-      wGradientColors: true,
-      wOpacity: true,
-      iconSize: 0,
-      titleColor: Colors.white,
-      borderRadius: BorderRadius.circular(30),
-      opacityValue: .4,
-      gradientColors: const [kSecondaryColor, kSecondaryColor],
-      shadows: const [
-        BoxShadow(
-            spreadRadius: 1.5,
-            blurRadius: 10,
-            offset: Offset(0.5, 6),
-            color: kDarkColor),
-      ],
+        ),
+      ),
     );
   }
 }
