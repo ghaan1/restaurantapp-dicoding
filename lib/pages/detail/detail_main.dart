@@ -51,19 +51,21 @@ class _DetailRestoranState extends State<DetailRestoran> {
             height: MediaQuery.of(context).size.height / 1,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  centerSlice: const Rect.fromLTRB(0, 1, 0, 1),
+                  // centerSlice: const Rect.fromLTRB(0, 1, 0, 1),
                   image: NetworkImage(foto),
-                  fit: BoxFit.scaleDown,
+                  fit: BoxFit.cover,
                   alignment: Alignment.topCenter),
               color: kPrimaryColor,
             ),
             child: Column(
               children: [
-                Container(
-                  height: 300,
-                ),
                 Expanded(
-                    child: Container(
+                  child: Container(
+                    width: double.infinity,
+                    height: 300,
+                  ),
+                ),
+                Container(
                   padding: const EdgeInsets.all(20),
                   width: double.infinity,
                   decoration: const BoxDecoration(
@@ -74,36 +76,41 @@ class _DetailRestoranState extends State<DetailRestoran> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        namaResto,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 30),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 20, bottom: 20),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              namaKota,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 17),
-                            ),
-                            Row(
+                      Column(
+                        children: [
+                          Text(
+                            namaResto,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 30),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(top: 20),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                getStar(),
                                 Text(
-                                  rating.toString(),
+                                  namaKota,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 17),
                                 ),
+                                Row(
+                                  children: [
+                                    getStar(),
+                                    Text(
+                                      rating.toString(),
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 17),
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       const SizedBox(
                         width: double.infinity,
@@ -148,7 +155,7 @@ class _DetailRestoranState extends State<DetailRestoran> {
                       ),
                     ],
                   ),
-                ))
+                )
               ],
             ),
           ),

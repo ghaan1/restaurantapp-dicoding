@@ -84,9 +84,6 @@ class ButtonSplash extends StatelessWidget {
                 ),
               );
             },
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(36)),
-            padding: const EdgeInsets.all(0.0),
             child: Ink(
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(

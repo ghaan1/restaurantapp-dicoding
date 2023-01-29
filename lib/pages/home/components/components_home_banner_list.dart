@@ -10,7 +10,7 @@ class BannerList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(15),
-      height: MediaQuery.of(context).size.height / 4,
+      height: 180,
       width: double.infinity,
       decoration: const BoxDecoration(
           color: kPrimaryColor,
