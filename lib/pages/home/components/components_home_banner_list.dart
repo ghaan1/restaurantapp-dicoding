@@ -17,7 +17,7 @@ class BannerList extends StatelessWidget {
           borderRadius: BorderRadius.vertical(
               top: Radius.circular(0), bottom: Radius.circular(40))),
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(15),
         child: Column(
           children: [
             const SizedBox(
@@ -46,12 +46,10 @@ class BannerList extends StatelessWidget {
               ),
             ),
             TextFormField(
-              // controller: txtEmail,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.search),
                 label: const Text('Search'),
                 floatingLabelBehavior: FloatingLabelBehavior.never,
-                // errorText: validateEmail(txtEmail.text),
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 17),
                 filled: true,

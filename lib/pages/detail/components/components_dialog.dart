@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurantapp/models/models_restaurant.dart';
 import 'package:restaurantapp/utils/utils.dart';
 
+// ignore: must_be_immutable
 class DetailMenuRestaurant extends StatefulWidget {
   Restaurant restaurant;
   DetailMenuRestaurant({
@@ -11,6 +12,7 @@ class DetailMenuRestaurant extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _DetailMenuRestaurantState createState() => _DetailMenuRestaurantState();
 }
 

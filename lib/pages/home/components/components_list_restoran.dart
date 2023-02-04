@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurantapp/models/models_restaurant.dart';
 import 'package:restaurantapp/utils/utils.dart';
 
+// ignore: must_be_immutable
 class ListRestoran extends StatelessWidget {
   Restaurant restaurant;
   ListRestoran({

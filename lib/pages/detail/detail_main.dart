@@ -3,33 +3,32 @@ import 'package:restaurantapp/models/models_restaurant.dart';
 import 'package:restaurantapp/pages/detail/components/components_dialog.dart';
 import 'package:restaurantapp/utils/utils.dart';
 
-class DetailRestoran extends StatefulWidget {
+// ignore: must_be_immutable
+class DetailRestaurant extends StatefulWidget {
   Restaurant restaurant;
-  DetailRestoran({super.key, required this.restaurant});
+  DetailRestaurant({super.key, required this.restaurant});
 
   @override
-  State<DetailRestoran> createState() => _DetailRestoranState();
+  State<DetailRestaurant> createState() => _DetailRestaurantState();
 }
 
-class _DetailRestoranState extends State<DetailRestoran> {
-  String namaResto = '';
-  String namaKota = '';
+class _DetailRestaurantState extends State<DetailRestaurant> {
+  String nameResto = '';
+  String nameCity = '';
   double rating = 0.0;
-  String isiDeskripsi = '';
-  String foto = '';
-  String listMakanan = '';
-  String listMenu = '';
+  String contentDesciption = '';
+  String image = '';
   List<Foods>? food;
   List<Drinks>? drinks;
 
   @override
   void initState() {
     super.initState();
-    namaResto = widget.restaurant.name;
-    namaKota = widget.restaurant.city;
+    nameResto = widget.restaurant.name;
+    nameCity = widget.restaurant.city;
     rating = widget.restaurant.rating;
-    foto = widget.restaurant.pictureId;
-    isiDeskripsi = widget.restaurant.description;
+    image = widget.restaurant.pictureId;
+    contentDesciption = widget.restaurant.description;
     food = widget.restaurant.menus?.foods;
     drinks = widget.restaurant.menus?.drinks;
   }
@@ -51,8 +50,7 @@ class _DetailRestoranState extends State<DetailRestoran> {
             height: MediaQuery.of(context).size.height / 1,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  // centerSlice: const Rect.fromLTRB(0, 1, 0, 1),
-                  image: NetworkImage(foto),
+                  image: NetworkImage(image),
                   fit: BoxFit.cover,
                   alignment: Alignment.topCenter),
               color: kPrimaryColor,
@@ -79,7 +77,7 @@ class _DetailRestoranState extends State<DetailRestoran> {
                       Column(
                         children: [
                           Text(
-                            namaResto,
+                            nameResto,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 30),
                           ),
@@ -91,7 +89,7 @@ class _DetailRestoranState extends State<DetailRestoran> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  namaKota,
+                                  nameCity,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 17),
@@ -126,9 +124,11 @@ class _DetailRestoranState extends State<DetailRestoran> {
                           width: double.infinity,
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.black)),
-                          child: Text(
-                            isiDeskripsi,
-                            textAlign: TextAlign.justify,
+                          child: SingleChildScrollView(
+                            child: Text(
+                              contentDesciption,
+                              textAlign: TextAlign.justify,
+                            ),
                           )),
                       SizedBox(
                         height: 45,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurantapp/pages/home/home_main.dart';
 import 'package:restaurantapp/utils/utils.dart';
 
+// ignore: must_be_immutable
 class HeaderSplash extends StatelessWidget {
   String text = '';
   HeaderSplash({super.key, required this.text});

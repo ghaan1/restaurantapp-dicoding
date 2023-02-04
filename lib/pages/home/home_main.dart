@@ -53,7 +53,7 @@ class _HomeMainState extends State<HomeMain> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return DetailRestoran(
+                                  return DetailRestaurant(
                                     restaurant: restaurant[index],
                                   );
                                 },
